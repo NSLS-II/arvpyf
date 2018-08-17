@@ -1,14 +1,31 @@
-.. Packaging Scientific Python documentation master file, created by
-   sphinx-quickstart on Thu Jun 28 12:35:56 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
- Archiver Python Frontend Documentation
-=======================================
+Archiver Python Frontend 
+=========================
+
+Archiver Python Frontend represents a collection of the Python classes
+associated with the `EPICS Archiver Appliance 
+<https://slacmshankar.github.io/epicsarchiver_docs/>`_ middle 
+layer and other data sources for building composite and extandable 
+applications and integrating them with general (like `Apache Spark
+<https://spark.apache.org/>`_) or domain-wide (like `NSLS-II Databroker
+<http://nsls-ii.github.io/databroker/>`_) data management and processing 
+systems. 
+
+The current version combines the Python classes for extending 
+the scope of the Archiver Appliance WebUI interface with the
+scalable configuration approach for registering the EPICS 
+process variables (PVs) using the EPICS Archiver Appliance MGMT
+service. 
+
+
+Index
+-----
 
 .. toctree::
    :maxdepth: 2
 
-   installation
+   intro
    usage
+   installation
+   api
    release-history
