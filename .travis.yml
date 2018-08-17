@@ -6,6 +6,11 @@ cache:
     - $HOME/.cache/pip
     - $HOME/.ccache  # https://github.com/travis-ci/travis-ci/issues/5853
 
+env:
+  global:
+    # Doctr deploy key for YOUR_GITHUB_USERNAME/YOUR_REPO_NAME
+    - secure: "poxOWrofQEk5gplcUjrzzSBO/YhGcefP9N4f1Q3w+XoB2LAFLr3A7j44xQRxCys8LdCmw/cgDq72+IAIxrn8hyOcHggBtO/A9ZR++8R5nEjk3ZzbSjl1HFqQXB/m3F4p3hAfg7Dq5t6eKjSSci7w8X13+RXGYIhdDv10y38xHdiXk0izw+jjY0Z+Q8B2m+x199TvthW8CYDB3jEo0CC+J6pYao96mF+tfk6fOjthEpO6MbYGegFQCZ4lUOVHNwCyH4NWcMpKO/W7auG/pQmgBVGaCZxGk9g0xJUxVtzWIg5wjxGoW3ANMVIqdXSjB/DTkYLfK1w/tzUvGTZ29szx6IRJKDgPrPEhGdTzgXkviuAnGahPc/p5gNyA756tiKnaoiJf42Bt+4Ccz3Wn7GsD9f6q1BipO8ltN6/8ZlN1nI2grBSNKPmvZOURghXNGyIY93sz6bc4VOU4gHEpHUnHI554C9Uwm13TfO/BvripEReppOZj/+4S2mx/H1VRVzb9XydcV/FjXxXyDhkfE5zA+cTGgkASiHVO71SXi7Tg69nTiuQITd/yoMhC96/oDSobboEfm2h+leS0Bk5iZXApL2rlQCTXJHf/C5AJzA0jSKGLaZQjlvwZHzap0qRJ+ldcdoNkWnlOIwpBAb/eI6uqdEakk1U+Cm5fkN8VSROy/Q4="
+
 install:
   # Install this package and the packages listed in requirements.txt.
   - pip install .
@@ -13,8 +18,8 @@ install:
   - pip install -r requirements-dev.txt
 
 script:
-  - coverage run -m pytest  # Run the tests and check for test coverage.
-  - coverage report -m  # Generate test coverage report.
-  - codecov  # Upload the report to codecov.
   - flake8 --max-line-length=115  # Enforce code style (but relax line length limit a bit).
+  - set -e # If any of the following steps fail, just stop at that point.
   - make -C docs html  # Build the documentation.
+  - pip install doctr
+  - doctr deploy --built-docs docs/build/html .  # Publish the documentation.
