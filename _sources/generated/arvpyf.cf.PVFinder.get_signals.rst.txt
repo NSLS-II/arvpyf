@@ -1,0 +1,6 @@
+arvpyf.cf.PVFinder.get\_signals
+===============================
+
+.. currentmodule:: arvpyf.cf
+
+.. automethod:: PVFinder.get_signals

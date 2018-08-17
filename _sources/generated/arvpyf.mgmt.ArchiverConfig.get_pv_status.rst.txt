@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.get\_pv\_status
+==========================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.get_pv_status

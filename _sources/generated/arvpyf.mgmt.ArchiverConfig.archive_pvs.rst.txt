@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.archive\_pvs
+=======================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.archive_pvs

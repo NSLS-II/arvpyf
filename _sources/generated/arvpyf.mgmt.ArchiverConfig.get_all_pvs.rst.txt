@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.get\_all\_pvs
+========================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.get_all_pvs

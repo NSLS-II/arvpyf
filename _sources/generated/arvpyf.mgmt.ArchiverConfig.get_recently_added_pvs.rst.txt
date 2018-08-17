@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.get\_recently\_added\_pvs
+====================================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.get_recently_added_pvs

@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.abort\_archiving\_pv
+===============================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.abort_archiving_pv

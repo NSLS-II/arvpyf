@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.get\_never\_connected\_pvs
+=====================================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.get_never_connected_pvs

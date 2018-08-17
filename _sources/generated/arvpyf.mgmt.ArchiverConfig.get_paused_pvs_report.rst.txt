@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.get\_paused\_pvs\_report
+===================================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.get_paused_pvs_report

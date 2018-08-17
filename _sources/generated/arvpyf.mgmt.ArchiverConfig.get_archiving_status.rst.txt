@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.get\_archiving\_status
+=================================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.get_archiving_status

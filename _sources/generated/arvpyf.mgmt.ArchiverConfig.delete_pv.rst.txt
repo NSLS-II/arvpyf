@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.delete\_pv
+=====================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.delete_pv

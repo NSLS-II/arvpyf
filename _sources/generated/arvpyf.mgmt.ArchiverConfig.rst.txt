@@ -1,0 +1,32 @@
+arvpyf.mgmt.ArchiverConfig
+==========================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. autoclass:: ArchiverConfig
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ArchiverConfig.__init__
+      ~ArchiverConfig.abort_archiving_pv
+      ~ArchiverConfig.archive_pvs
+      ~ArchiverConfig.delete_pv
+      ~ArchiverConfig.get_all_pvs
+      ~ArchiverConfig.get_archiving_status
+      ~ArchiverConfig.get_never_connected_pvs
+      ~ArchiverConfig.get_paused_pvs_report
+      ~ArchiverConfig.get_pv_status
+      ~ArchiverConfig.get_recently_added_pvs
+      ~ArchiverConfig.pause_archiving_pvs
+   
+   
+
+   
+   
+   

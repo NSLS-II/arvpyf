@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.pause\_archiving\_pvs
+================================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.pause_archiving_pvs
