@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash;  Archiver Python Frontend 0.post4+g3fd5ee4 documentation</title>
+  <title>Usage &mdash;  Archiver Python Frontend 0.post5+g0066651 documentation</title>
   
 
   
@@ -31,8 +31,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation" href="installation.html" />
-    <link rel="prev" title="Archiver Appliance Three-Tier Architecture" href="intro.html" /> 
+    <link rel="next" title="API Documentation" href="api.html" />
+    <link rel="prev" title="Archiver Appliance Overview" href="intro.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post4+g3fd5ee4
+                0.post5+g0066651
               </div>
             
           
@@ -86,10 +86,18 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Archiver Appliance Three-Tier Architecture</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Archiver Appliance Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-the-archiverconfig-instance">Creating the ArchiverConfig Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieving-pvs-from-archiver">Retrieving PVs from Archiver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retrieving-pvs-from-the-channel-finder">Retrieving PVs from the Channel Finder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selecting-pvs-for-archiving">Selecting PVs for Archiving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#archiving-pvs">Archiving PVs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#restoring-the-original-test-configuration">Restoring the Original Test Configuration</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future.html">Future Directions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
 </ul>
 
@@ -157,9 +165,111 @@
             
   <div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
-<p>Start by importing  Archiver Python Frontend.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arvpyf</span>
+<p>The Archiver Configuration Python Frontend (ACPF) is developed
+for extending the scope of the EPICS Archiver Appliance
+WebUI interface with a collection of methods for registering
+numerous PVs from different NSLS-II sub-systems. Its usage
+can be illustrated with the following demo.</p>
+<div class="section" id="creating-the-archiverconfig-instance">
+<h2>Creating the ArchiverConfig Instance<a class="headerlink" href="#creating-the-archiverconfig-instance" title="Permalink to this headline">¶</a></h2>
+<p>ACPF methods are consolidated in the ArchiverConfig and PVFinder
+classes of two arvpyf submodules, mgmt and cf, respectively.
+ArchiverConfig wraps the REST API calls for cummunication with
+the Archiver MGMT server and PVFinder implements the interface
+that searches for the PVs listed in the Channel Finder dbl files.</p>
+<p>To create an ArchiverConfig instance, it needs to have
+a specified address of the EPICS Archiver Appliance MGMT service.
+For example, in NSLS-II, each beamline maintains its own archiver
+on a dedicated server and the corresponding address is defined in
+the /etc/archappl/appliances.xml file. Initialization of the
+PVFinder requires the path to the Channel Finder folder containing
+the dbl files.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arvpyf</span> <span class="kn">import</span> <span class="n">mgmt</span><span class="p">,</span> <span class="n">cf</span>
+<span class="kn">from</span> <span class="nn">arvpyf.mgmt</span> <span class="kn">import</span> <span class="n">ArchiverConfig</span>
+<span class="kn">from</span> <span class="nn">arvpyf.cf</span> <span class="kn">import</span> <span class="n">PVFinder</span>
+
+<span class="n">bpl_url</span> <span class="o">=</span> <span class="s1">&#39;http://xf04id-ca1.cs.nsls2.local:17665/mgmt/bpl&#39;</span>
+<span class="n">arvconf</span> <span class="o">=</span> <span class="n">ArchiverConfig</span><span class="p">(</span><span class="n">bpl_url</span><span class="p">)</span>
+
+<span class="n">cf_update</span> <span class="o">=</span> <span class="s1">&#39;/GPFS/CENTRAL/dama/cf-update/&#39;</span>
+<span class="n">pvfinder</span> <span class="o">=</span> <span class="n">PVFinder</span><span class="p">(</span><span class="n">cf_update</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="retrieving-pvs-from-archiver">
+<h2>Retrieving PVs from Archiver<a class="headerlink" href="#retrieving-pvs-from-archiver" title="Permalink to this headline">¶</a></h2>
+<p>The ArchiverConfig communication with the EPICS Archiver Appliance
+is based on a set of <a class="reference external" href="https://slacmshankar.github.io/epicsarchiver_docs/api/mgmt_scriptables.html">business logic commands</a>
+supported by the MGMT service. One of these is the getAllPV for retrieving
+all PVs from the archiver. The command has two optional arguments:
+regex and limit. The regex argument can contain a <a class="reference external" href="https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html">Java regex</a>
+wildcard. The limit argument specifies the number of matched PVs that
+are returned. If unspecified, the method returns 500 PV names.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arv_pvs</span> <span class="o">=</span> <span class="n">arvconf</span><span class="o">.</span><span class="n">get_all_pvs</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="retrieving-pvs-from-the-channel-finder">
+<h2>Retrieving PVs from the Channel Finder<a class="headerlink" href="#retrieving-pvs-from-the-channel-finder" title="Permalink to this headline">¶</a></h2>
+<p>The PVFinder interface follows the NSLS-II Standard-Naming Convention
+defining the PV names in the form <em>System{Device}Signal</em>. For this example,
+the demo selects all PVs with ‘.*Mtr.*StringOut_’ signals:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bl</span> <span class="o">=</span> <span class="s2">&quot;xf04&quot;</span>
+<span class="n">cf_pvs</span> <span class="o">=</span> <span class="n">pvfinder</span><span class="o">.</span><span class="n">get_pvs</span><span class="p">(</span><span class="n">bl</span><span class="p">,</span> <span class="n">system</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;.*&#39;</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="s1">&#39;.*Mtr.*StringOut_&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="selecting-pvs-for-archiving">
+<h2>Selecting PVs for Archiving<a class="headerlink" href="#selecting-pvs-for-archiving" title="Permalink to this headline">¶</a></h2>
+<p>After retrieving two PV collections from Archiver and Channel Finder
+in the same Python script, their difference can be compared, analyzed,
+and selected using standard Python methods. The demo selects 1000 PVs from
+the difference of the two collections:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">diff_pvs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">cf_pvs</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">arv_pvs</span><span class="p">))</span>
+<span class="n">demo_pvs</span> <span class="o">=</span> <span class="n">diff_pvs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="archiving-pvs">
+<h2>Archiving PVs<a class="headerlink" href="#archiving-pvs" title="Permalink to this headline">¶</a></h2>
+<p>In the EPICS Archiver Appliance, the PV registration is a complex procedure
+requiring several minutes for processing multiple steps. The corresponding
+request however is asynchroneous. Therefore, the demo adds a 5-minute time
+delay for processing 1000 PVs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">archive_pvs</span> <span class="o">=</span> <span class="n">arvconf</span><span class="o">.</span><span class="n">archive_pvs</span><span class="p">(</span><span class="n">demo_pvs</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The status of a request can be checked with the <em>getArchivingStatus</em> command.
+The present Archiver Appliance can handle a subset of PVs. Therefore,
+requests of unarchived PVs need to be aborted:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">archived</span><span class="p">,</span> <span class="n">others</span> <span class="o">=</span> <span class="n">arvconf</span><span class="o">.</span><span class="n">get_archiving_status</span><span class="p">(</span><span class="n">demo_pvs</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pv</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">others</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">arvconf</span><span class="o">.</span><span class="n">abort_archiving_pv</span><span class="p">(</span><span class="n">pv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="restoring-the-original-test-configuration">
+<h2>Restoring the Original Test Configuration<a class="headerlink" href="#restoring-the-original-test-configuration" title="Permalink to this headline">¶</a></h2>
+<p>In order to return back to the initial test configuration, archived PVs
+need to be deleted. In the EPICS Archiver Appliance, the deleting procedure
+requires to preliminary pause the corresponding PVs. This method is also
+asynchroneous and requires a time delay. For controling this procedure,
+the test demo applies an additional <em>getPausedPVsReport</em> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">paused_pvs_1</span> <span class="o">=</span> <span class="n">arvconf</span><span class="o">.</span><span class="n">get_paused_pvs_report</span><span class="p">()</span>
+<span class="n">pause_pvs</span> <span class="o">=</span> <span class="n">arvconf</span><span class="o">.</span><span class="n">pause_archiving_pvs</span><span class="p">(</span><span class="n">archived</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">paused_pvs_2</span><span class="o">=</span> <span class="n">arvconf</span><span class="o">.</span><span class="n">get_paused_pvs_report</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Finally, paused PVs can be deleted and the status of the test configuration
+is checked with the getPausedPVsReport and getAllPVs methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pv</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">archived</span><span class="p">):</span>
+    <span class="n">delete_pv</span> <span class="o">=</span> <span class="n">arvconf</span><span class="o">.</span><span class="n">delete_pv</span><span class="p">(</span><span class="n">pv</span><span class="p">)</span>
+<span class="n">paused_pvs</span> <span class="o">=</span> <span class="n">arvconf</span><span class="o">.</span><span class="n">get_paused_pvs_report</span><span class="p">()</span>
+<span class="n">final_pvs</span> <span class="o">=</span> <span class="n">arvconf</span><span class="o">.</span><span class="n">get_all_pvs</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -171,10 +281,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="intro.html" class="btn btn-neutral" title="Archiver Appliance Three-Tier Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="intro.html" class="btn btn-neutral" title="Archiver Appliance Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -205,7 +315,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.post4+g3fd5ee4',
+            VERSION:'0.post5+g0066651',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

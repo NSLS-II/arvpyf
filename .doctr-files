@@ -1,7 +1,10 @@
+./_images/architecture.png
+./_images/extension.png
 ./_modules/arvpyf/cf.html
 ./_modules/arvpyf/mgmt.html
 ./_modules/index.html
 ./_sources/api.rst.txt
+./_sources/future.rst.txt
 ./_sources/generated/arvpyf.cf.PVFinder.get_devices.rst.txt
 ./_sources/generated/arvpyf.cf.PVFinder.get_pvs.rst.txt
 ./_sources/generated/arvpyf.cf.PVFinder.get_signals.rst.txt
@@ -19,7 +22,6 @@
 ./_sources/generated/arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.rst.txt
 ./_sources/generated/arvpyf.mgmt.ArchiverConfig.rst.txt
 ./_sources/index.rst.txt
-./_sources/installation.rst.txt
 ./_sources/intro.rst.txt
 ./_sources/release-history.rst.txt
 ./_sources/usage.rst.txt
@@ -80,6 +82,7 @@
 ./_static/up.png
 ./_static/websupport.js
 ./api.html
+./future.html
 ./generated/arvpyf.cf.PVFinder.get_devices.html
 ./generated/arvpyf.cf.PVFinder.get_pvs.html
 ./generated/arvpyf.cf.PVFinder.get_signals.html
@@ -98,7 +101,6 @@
 ./generated/arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html
 ./genindex.html
 ./index.html
-./installation.html
 ./intro.html
 ./objects.inv
 ./release-history.html

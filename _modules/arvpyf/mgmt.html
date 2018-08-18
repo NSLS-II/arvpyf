@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arvpyf.mgmt &mdash;  Archiver Python Frontend 0.post4+g3fd5ee4 documentation</title>
+  <title>arvpyf.mgmt &mdash;  Archiver Python Frontend 0.post5+g0066651 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.post4+g3fd5ee4
+                0.post5+g0066651
               </div>
             
           
@@ -84,10 +84,10 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Archiver Appliance Three-Tier Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Archiver Appliance Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../future.html">Future Directions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../release-history.html">Release History</a></li>
 </ul>
 
@@ -177,7 +177,7 @@
 
 <div class="viewcode-block" id="ArchiverConfig.get_all_pvs"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.get_all_pvs.html#arvpyf.mgmt.ArchiverConfig.get_all_pvs">[docs]</a>    <span class="k">def</span> <span class="nf">get_all_pvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">500</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Return all the PVs (Note this call can return millions of PVs)</span>
+<span class="sd">        Return all the PVs (Note: this call can return millions of PVs)</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -261,7 +261,7 @@
 
 <div class="viewcode-block" id="ArchiverConfig.get_never_connected_pvs"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html#arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs">[docs]</a>    <span class="k">def</span> <span class="nf">get_never_connected_pvs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Return a list of PVs that have never connected</span>
+<span class="sd">        Return a list of PVs that never connected</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">request_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;/getNeverConnectedPVs&#39;</span>
         <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -271,7 +271,7 @@
 
 <div class="viewcode-block" id="ArchiverConfig.archive_pvs"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.archive_pvs.html#arvpyf.mgmt.ArchiverConfig.archive_pvs">[docs]</a>    <span class="k">def</span> <span class="nf">archive_pvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pvnames</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Archive one or more PV&#39;s</span>
+<span class="sd">        Archive one or more PVs</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -336,7 +336,7 @@
 
 <div class="viewcode-block" id="ArchiverConfig.abort_archiving_pv"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html#arvpyf.mgmt.ArchiverConfig.abort_archiving_pv">[docs]</a>    <span class="k">def</span> <span class="nf">abort_archiving_pv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Abort any pending requests for archiving this PV</span>
+<span class="sd">        Abort any pending requests for archiving the specified PV</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -384,7 +384,7 @@
 
 <div class="viewcode-block" id="ArchiverConfig.delete_pv"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.delete_pv.html#arvpyf.mgmt.ArchiverConfig.delete_pv">[docs]</a>    <span class="k">def</span> <span class="nf">delete_pv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Stop archiving the specified PV (The PV needs to be paused first)</span>
+<span class="sd">        Stop archiving the specified PV (Note: the PV needs to be paused first)</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -430,7 +430,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.post4+g3fd5ee4',
+            VERSION:'0.post5+g0066651',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

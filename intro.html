@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Archiver Appliance Three-Tier Architecture &mdash;  Archiver Python Frontend 0.post4+g3fd5ee4 documentation</title>
+  <title>Archiver Appliance Overview &mdash;  Archiver Python Frontend 0.post5+g0066651 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post4+g3fd5ee4
+                0.post5+g0066651
               </div>
             
           
@@ -86,10 +86,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Archiver Appliance Three-Tier Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Archiver Appliance Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future.html">Future Directions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
 </ul>
 
@@ -136,7 +136,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Archiver Appliance Three-Tier Architecture</li>
+      <li>Archiver Appliance Overview</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -155,12 +155,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="archiver-appliance-three-tier-architecture">
-<h1>Archiver Appliance Three-Tier Architecture<a class="headerlink" href="#archiver-appliance-three-tier-architecture" title="Permalink to this headline">¶</a></h1>
-<p>Start by importing  Archiver Python Frontend.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arvpyf</span>
-</pre></div>
-</div>
+  <div class="section" id="archiver-appliance-overview">
+<h1>Archiver Appliance Overview<a class="headerlink" href="#archiver-appliance-overview" title="Permalink to this headline">¶</a></h1>
+<p>The  EPICS  <a class="reference external" href="https://slacmshankar.github.io/epicsarchiver_docs">Archiver Appliance</a>
+is developed by Murali Shankar, SLAC. As shown in the Figure,
+its architecture is designed after the standard three-tier approach.</p>
+<a class="reference internal image-reference" href="_images/architecture.png"><img alt="_images/architecture.png" src="_images/architecture.png" style="width: 700px;" /></a>
+<p>The data in the bottom data layer are collected in three data stores:</p>
+<ul class="simple">
+<li>STS: short-term temporary file storage (tmpfs) implemented with
+the RAM disk used as an one-hour buffer</li>
+<li>MTS: middle-term repository of the Protocol Buffer daily files
+accumulated over one week (e.g. /DATA/mts)</li>
+<li>LTS: long-term repository of the Protocol Buffer annual files
+(e.g., /DATA/lts)</li>
+</ul>
+<p>In addition to data files, the bottom layer includes the MySQL
+archappl database for maintaining the PV meta data that encompasses
+the PV fields (e.g., alarm limits) and archiver parameters (e.g.,
+sampling period).</p>
+<p>The Archiver Appliance middle layer consists of four Tomcat-based
+Java servers:</p>
+<ul class="simple">
+<li>Engine: establishes Channel Access monitors and then writers
+the data into the short term storage (STS)</li>
+<li>ETL (Extract, Transform, and Load): moves data from the STS to
+the MTS and from the MTS to the LTS</li>
+<li>Retrieval: gathers data from all the stores, and then stitches
+them together to satisfy the data retrieval requests</li>
+<li>MGMT: manages all the other three servers and holds the configuration
+state</li>
+</ul>
+<p>The  top layer encompasses GUI, Web, and scripting interfaces that
+communicate with the middle  layer servers. Specifically, plots  with
+time series are provided by the Data Browser module from the Control
+System Studio (CSS). Both the CSS and Python applications use the
+composite communication approach based on the HTTP protocol and binary
+Protocol  Buffer  messages. For the  administration and  configuration
+of the EPICS Archiver Appliance, the MGMT server exposes a set of Web
+service calls (business process logic) that can be accessed via Web UI
+or Python interface using the REST (Representational State Transfer) API.</p>
 </div>
 
 
@@ -205,7 +239,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.post4+g3fd5ee4',
+            VERSION:'0.post5+g0066651',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

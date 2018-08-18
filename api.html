@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Documentation &mdash;  Archiver Python Frontend 0.post4+g3fd5ee4 documentation</title>
+  <title>API Documentation &mdash;  Archiver Python Frontend 0.post5+g0066651 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="arvpyf.mgmt.ArchiverConfig" href="generated/arvpyf.mgmt.ArchiverConfig.html" />
-    <link rel="prev" title="Installation" href="installation.html" /> 
+    <link rel="prev" title="Usage" href="usage.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post4+g3fd5ee4
+                0.post5+g0066651
               </div>
             
           
@@ -86,9 +86,8 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Archiver Appliance Three-Tier Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Archiver Appliance Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-archiverconfig-class">The ArchiverConfig class</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/arvpyf.mgmt.ArchiverConfig.html">arvpyf.mgmt.ArchiverConfig</a></li>
@@ -114,6 +113,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="future.html">Future Directions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
 </ul>
 
@@ -203,7 +203,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/arvpyf.mgmt.ArchiverConfig.get_all_pvs.html#arvpyf.mgmt.ArchiverConfig.get_all_pvs" title="arvpyf.mgmt.ArchiverConfig.get_all_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiverConfig.get_all_pvs</span></code></a></td>
-<td>Return all the PVs (Note this call can return millions of PVs)</td>
+<td>Return all the PVs (Note: this call can return millions of PVs)</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/arvpyf.mgmt.ArchiverConfig.get_pv_status.html#arvpyf.mgmt.ArchiverConfig.get_pv_status" title="arvpyf.mgmt.ArchiverConfig.get_pv_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiverConfig.get_pv_status</span></code></a></td>
 <td>Return the PV status</td>
@@ -215,7 +215,7 @@
 <td>Return a list of PVs that are currently paused</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html#arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs" title="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiverConfig.get_never_connected_pvs</span></code></a></td>
-<td>Return a list of PVs that have never connected</td>
+<td>Return a list of PVs that never connected</td>
 </tr>
 </tbody>
 </table>
@@ -227,7 +227,7 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/arvpyf.mgmt.ArchiverConfig.archive_pvs.html#arvpyf.mgmt.ArchiverConfig.archive_pvs" title="arvpyf.mgmt.ArchiverConfig.archive_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiverConfig.archive_pvs</span></code></a></td>
-<td>Archive one or more PV’s</td>
+<td>Archive one or more PVs</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/arvpyf.mgmt.ArchiverConfig.get_archiving_status.html#arvpyf.mgmt.ArchiverConfig.get_archiving_status" title="arvpyf.mgmt.ArchiverConfig.get_archiving_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiverConfig.get_archiving_status</span></code></a></td>
 <td>Return the PV archiving status</td>
@@ -242,13 +242,13 @@
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><a class="reference internal" href="generated/arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html#arvpyf.mgmt.ArchiverConfig.abort_archiving_pv" title="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiverConfig.abort_archiving_pv</span></code></a></td>
-<td>Abort any pending requests for archiving this PV</td>
+<td>Abort any pending requests for archiving the specified PV</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html#arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs" title="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiverConfig.pause_archiving_pvs</span></code></a></td>
 <td>Pause archiving the specified PVs</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/arvpyf.mgmt.ArchiverConfig.delete_pv.html#arvpyf.mgmt.ArchiverConfig.delete_pv" title="arvpyf.mgmt.ArchiverConfig.delete_pv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ArchiverConfig.delete_pv</span></code></a></td>
-<td>Stop archiving the specified PV (The PV needs to be paused first)</td>
+<td>Stop archiving the specified PV (Note: the PV needs to be paused first)</td>
 </tr>
 </tbody>
 </table>
@@ -301,7 +301,7 @@
         <a href="generated/arvpyf.mgmt.ArchiverConfig.html" class="btn btn-neutral float-right" title="arvpyf.mgmt.ArchiverConfig" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="installation.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -332,7 +332,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.post4+g3fd5ee4',
+            VERSION:'0.post5+g0066651',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
