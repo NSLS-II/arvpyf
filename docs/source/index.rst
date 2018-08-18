@@ -2,7 +2,7 @@
 Archiver Python Frontend 
 =========================
 
-Archiver Python Frontend represents a collection of the Python classes
+Archiver Python Frontend represents a collection of Python classes
 associated with the `EPICS Archiver Appliance 
 <https://slacmshankar.github.io/epicsarchiver_docs/>`_ middle 
 layer and other data sources for building composite and extandable 
@@ -22,10 +22,10 @@ Index
 -----
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    intro
    usage
-   installation
    api
+   future
    release-history

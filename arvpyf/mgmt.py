@@ -23,7 +23,7 @@ class ArchiverConfig(object):
 
     def get_all_pvs(self, regex='', limit=500):
         """
-        Return all the PVs (Note this call can return millions of PVs)
+        Return all the PVs (Note: this call can return millions of PVs)
 
         Parameters
         ----------
@@ -107,7 +107,7 @@ class ArchiverConfig(object):
 
     def get_never_connected_pvs(self):
         """
-        Return a list of PVs that have never connected
+        Return a list of PVs that never connected
         """
         request_url = self.url + '/getNeverConnectedPVs'
         req = requests.get(request_url, stream=True)
@@ -117,7 +117,7 @@ class ArchiverConfig(object):
 
     def archive_pvs(self, pvnames):
         """
-        Archive one or more PV's
+        Archive one or more PVs
 
         Parameters
         ----------
@@ -182,7 +182,7 @@ class ArchiverConfig(object):
 
     def abort_archiving_pv(self, pv):
         """
-        Abort any pending requests for archiving this PV
+        Abort any pending requests for archiving the specified PV
 
         Parameters
         ----------
@@ -230,7 +230,7 @@ class ArchiverConfig(object):
 
     def delete_pv(self, pv):
         """
-        Stop archiving the specified PV (The PV needs to be paused first)
+        Stop archiving the specified PV (Note: the PV needs to be paused first)
 
         Parameters
         ----------
