@@ -2,7 +2,7 @@
 Release History
 ===============
 
-v0.2.0 (2018-08-18)
+v0.2.0 (2018-08-19)
 ----------------------------
 
 Updated the ArchiverConfig interface with the get_pv_type_info and 
