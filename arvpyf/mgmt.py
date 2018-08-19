@@ -87,6 +87,22 @@ class ArchiverConfig(object):
             result += r
         return result
 
+    def get_pv_type_info(self, pv):
+        """
+        Return the type info for the specified PV
+
+        Parameters
+        ----------
+        pv : str
+            PV name
+        """
+        params = {'pv': pv}
+        request_url = self.url + '/getPVTypeInfo'
+        req = requests.get(request_url, params=params, stream=True)
+        result = req.json()
+
+        return result
+
     def get_recently_added_pvs(self):
         """
         Return a list of PVs sorted by descending PVTypeInfo creation timestamp
@@ -115,7 +131,8 @@ class ArchiverConfig(object):
         pvs = [pv['pvName'] for pv in result]
         return pvs
 
-    def archive_pvs(self, pvnames):
+    def archive_pvs(self, pvnames, period=1.0, method='MONITOR',
+                    policy='Default'):
         """
         Archive one or more PVs
 
@@ -123,6 +140,12 @@ class ArchiverConfig(object):
         ----------
         pvnames : list
             list of PV names
+        period : float, optional
+            sampling period to be used (default value is 1.0 seconds)
+        method : str, optional
+            sampling method to be used, MONITOR(default) or SCAN
+        policy : str, optional
+            policy name (default: 'Default')
         """
         request_url = self.url + '/archivePV'
         headers = {"Content-type": "application/json", "Accept": "text/plain"}
@@ -130,6 +153,9 @@ class ArchiverConfig(object):
         for pv in pvnames:
             pvdict = {}
             pvdict['pv'] = pv
+            pvdict['samplingperiod'] = str(period)
+            pvdict['samplingmethod'] = method
+            pvdict['policy'] = policy
             pvs.append(pvdict)
 
         data = json.dumps(pvs)
@@ -228,7 +254,41 @@ class ArchiverConfig(object):
             pause_pvs += p_pvs
         return pause_pvs
 
-    def delete_pv(self, pv):
+    def _resume_archiving_pvs(self, pvs):
+        result = []
+        if len(pvs) == 0:
+            return result
+
+        pv = pvs[0]
+        if len(pvs) > 1:
+            for pvname in pvs[1:]:
+                pv += ',' + pvname
+
+        params = {'pv': pv}
+        request_url = self.url + '/resumeArchivingPV'
+        req = requests.get(request_url, params=params, stream=True)
+        result = req.json()
+
+        return result
+
+    def resume_archiving_pvs(self, pvs):
+        """
+        Resume archiving the specified PVs
+
+        Parameters
+        ----------
+        pvs : list
+            list of PV names
+        """
+        arch_pvs = []
+        for i in range(0, len(pvs), 100):
+            i1 = i
+            i2 = min(i1+100, len(pvs))
+            p_pvs = self._resume_archiving_pvs(pvs[i1:i2])
+            arch_pvs += p_pvs
+        return arch_pvs
+
+    def delete_pv(self, pv, deleteData=False):
         """
         Stop archiving the specified PV (Note: the PV needs to be paused first)
 
@@ -236,8 +296,14 @@ class ArchiverConfig(object):
         ----------
         pv : str
             PV name
+        deleteData : bool, optional
+            delete the data that has already been recorded (default: False)
         """
         params = {'pv': pv}
+        if deleteData is False:
+            params['deleteData'] = 'false'
+        else:
+            params['deleteData'] = 'true'
         request_url = self.url + '/deletePV'
         req = requests.get(request_url, params=params, stream=True)
         result = req.json()
