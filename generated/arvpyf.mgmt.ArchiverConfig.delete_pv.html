@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arvpyf.mgmt.ArchiverConfig.delete_pv &mdash;  Archiver Python Frontend 0.post6+gcaddbac documentation</title>
+  <title>arvpyf.mgmt.ArchiverConfig.delete_pv &mdash;  Archiver Python Frontend 0.1.0.post1+g8ac0052 documentation</title>
   
 
   
@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="arvpyf.cf.PVFinder" href="arvpyf.cf.PVFinder.html" />
-    <link rel="prev" title="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs" href="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html" /> 
+    <link rel="prev" title="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs" href="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post6+gcaddbac
+                0.1.0.post1+g8ac0052
               </div>
             
           
@@ -93,6 +93,7 @@
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.html">arvpyf.mgmt.ArchiverConfig</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_all_pvs.html">arvpyf.mgmt.ArchiverConfig.get_all_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_status.html">arvpyf.mgmt.ArchiverConfig.get_pv_status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_type_info.html">arvpyf.mgmt.ArchiverConfig.get_pv_type_info</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.html">arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html">arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html">arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs</a></li>
@@ -100,6 +101,7 @@
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_archiving_status.html">arvpyf.mgmt.ArchiverConfig.get_archiving_status</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html">arvpyf.mgmt.ArchiverConfig.abort_archiving_pv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html">arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.html">arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">arvpyf.mgmt.ArchiverConfig.delete_pv</a></li>
 </ul>
 </li>
@@ -178,7 +180,7 @@
 <h1>arvpyf.mgmt.ArchiverConfig.delete_pv<a class="headerlink" href="#arvpyf-mgmt-archiverconfig-delete-pv" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
 <dt id="arvpyf.mgmt.ArchiverConfig.delete_pv">
-<code class="descclassname">ArchiverConfig.</code><code class="descname">delete_pv</code><span class="sig-paren">(</span><em>pv</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arvpyf/mgmt.html#ArchiverConfig.delete_pv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arvpyf.mgmt.ArchiverConfig.delete_pv" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">ArchiverConfig.</code><code class="descname">delete_pv</code><span class="sig-paren">(</span><em>pv</em>, <em>deleteData=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arvpyf/mgmt.html#ArchiverConfig.delete_pv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arvpyf.mgmt.ArchiverConfig.delete_pv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stop archiving the specified PV (Note: the PV needs to be paused first)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -187,6 +189,9 @@
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
 <dt><strong>pv</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
 <dd><p class="first last">PV name</p>
+</dd>
+<dt><strong>deleteData</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">delete the data that has already been recorded (default: False)</p>
 </dd>
 </dl>
 </td>
@@ -208,7 +213,7 @@
         <a href="arvpyf.cf.PVFinder.html" class="btn btn-neutral float-right" title="arvpyf.cf.PVFinder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html" class="btn btn-neutral" title="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.html" class="btn btn-neutral" title="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -239,7 +244,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.post6+gcaddbac',
+            VERSION:'0.1.0.post1+g8ac0052',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

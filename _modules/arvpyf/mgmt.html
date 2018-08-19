@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arvpyf.mgmt &mdash;  Archiver Python Frontend 0.post6+gcaddbac documentation</title>
+  <title>arvpyf.mgmt &mdash;  Archiver Python Frontend 0.1.0.post1+g8ac0052 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.post6+gcaddbac
+                0.1.0.post1+g8ac0052
               </div>
             
           
@@ -241,6 +241,22 @@
             <span class="n">result</span> <span class="o">+=</span> <span class="n">r</span>
         <span class="k">return</span> <span class="n">result</span></div>
 
+<div class="viewcode-block" id="ArchiverConfig.get_pv_type_info"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.get_pv_type_info.html#arvpyf.mgmt.ArchiverConfig.get_pv_type_info">[docs]</a>    <span class="k">def</span> <span class="nf">get_pv_type_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the type info for the specified PV</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pv : str</span>
+<span class="sd">            PV name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pv&#39;</span><span class="p">:</span> <span class="n">pv</span><span class="p">}</span>
+        <span class="n">request_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;/getPVTypeInfo&#39;</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
 <div class="viewcode-block" id="ArchiverConfig.get_recently_added_pvs"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.html#arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs">[docs]</a>    <span class="k">def</span> <span class="nf">get_recently_added_pvs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a list of PVs sorted by descending PVTypeInfo creation timestamp</span>
@@ -269,7 +285,8 @@
         <span class="n">pvs</span> <span class="o">=</span> <span class="p">[</span><span class="n">pv</span><span class="p">[</span><span class="s1">&#39;pvName&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">pvs</span></div>
 
-<div class="viewcode-block" id="ArchiverConfig.archive_pvs"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.archive_pvs.html#arvpyf.mgmt.ArchiverConfig.archive_pvs">[docs]</a>    <span class="k">def</span> <span class="nf">archive_pvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pvnames</span><span class="p">):</span>
+<div class="viewcode-block" id="ArchiverConfig.archive_pvs"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.archive_pvs.html#arvpyf.mgmt.ArchiverConfig.archive_pvs">[docs]</a>    <span class="k">def</span> <span class="nf">archive_pvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pvnames</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;MONITOR&#39;</span><span class="p">,</span>
+                    <span class="n">policy</span><span class="o">=</span><span class="s1">&#39;Default&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Archive one or more PVs</span>
 
@@ -277,6 +294,12 @@
 <span class="sd">        ----------</span>
 <span class="sd">        pvnames : list</span>
 <span class="sd">            list of PV names</span>
+<span class="sd">        period : float, optional</span>
+<span class="sd">            sampling period to be used (default value is 1.0 seconds)</span>
+<span class="sd">        method : str, optional</span>
+<span class="sd">            sampling method to be used, MONITOR(default) or SCAN</span>
+<span class="sd">        policy : str, optional</span>
+<span class="sd">            policy name (default: &#39;Default&#39;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">request_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;/archivePV&#39;</span>
         <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">}</span>
@@ -284,6 +307,9 @@
         <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">pvnames</span><span class="p">:</span>
             <span class="n">pvdict</span> <span class="o">=</span> <span class="p">{}</span>
             <span class="n">pvdict</span><span class="p">[</span><span class="s1">&#39;pv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pv</span>
+            <span class="n">pvdict</span><span class="p">[</span><span class="s1">&#39;samplingperiod&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+            <span class="n">pvdict</span><span class="p">[</span><span class="s1">&#39;samplingmethod&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">method</span>
+            <span class="n">pvdict</span><span class="p">[</span><span class="s1">&#39;policy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">policy</span>
             <span class="n">pvs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pvdict</span><span class="p">)</span>
 
         <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">pvs</span><span class="p">)</span>
@@ -382,7 +408,41 @@
             <span class="n">pause_pvs</span> <span class="o">+=</span> <span class="n">p_pvs</span>
         <span class="k">return</span> <span class="n">pause_pvs</span></div>
 
-<div class="viewcode-block" id="ArchiverConfig.delete_pv"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.delete_pv.html#arvpyf.mgmt.ArchiverConfig.delete_pv">[docs]</a>    <span class="k">def</span> <span class="nf">delete_pv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_resume_archiving_pvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pvs</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pvs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span>
+
+        <span class="n">pv</span> <span class="o">=</span> <span class="n">pvs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pvs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">pvname</span> <span class="ow">in</span> <span class="n">pvs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">pv</span> <span class="o">+=</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span> <span class="n">pvname</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pv&#39;</span><span class="p">:</span> <span class="n">pv</span><span class="p">}</span>
+        <span class="n">request_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;/resumeArchivingPV&#39;</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+<div class="viewcode-block" id="ArchiverConfig.resume_archiving_pvs"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.html#arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs">[docs]</a>    <span class="k">def</span> <span class="nf">resume_archiving_pvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pvs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Resume archiving the specified PVs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pvs : list</span>
+<span class="sd">            list of PV names</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">arch_pvs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pvs</span><span class="p">),</span> <span class="mi">100</span><span class="p">):</span>
+            <span class="n">i1</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="n">i2</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">i1</span><span class="o">+</span><span class="mi">100</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pvs</span><span class="p">))</span>
+            <span class="n">p_pvs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resume_archiving_pvs</span><span class="p">(</span><span class="n">pvs</span><span class="p">[</span><span class="n">i1</span><span class="p">:</span><span class="n">i2</span><span class="p">])</span>
+            <span class="n">arch_pvs</span> <span class="o">+=</span> <span class="n">p_pvs</span>
+        <span class="k">return</span> <span class="n">arch_pvs</span></div>
+
+<div class="viewcode-block" id="ArchiverConfig.delete_pv"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.delete_pv.html#arvpyf.mgmt.ArchiverConfig.delete_pv">[docs]</a>    <span class="k">def</span> <span class="nf">delete_pv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">deleteData</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Stop archiving the specified PV (Note: the PV needs to be paused first)</span>
 
@@ -390,8 +450,14 @@
 <span class="sd">        ----------</span>
 <span class="sd">        pv : str</span>
 <span class="sd">            PV name</span>
+<span class="sd">        deleteData : bool, optional</span>
+<span class="sd">            delete the data that has already been recorded (default: False)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pv&#39;</span><span class="p">:</span> <span class="n">pv</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">deleteData</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;deleteData&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;false&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s1">&#39;deleteData&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
         <span class="n">request_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;/deletePV&#39;</span>
         <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -430,7 +496,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.post6+gcaddbac',
+            VERSION:'0.1.0.post1+g8ac0052',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

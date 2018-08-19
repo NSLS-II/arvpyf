@@ -18,8 +18,10 @@
 ./_sources/generated/arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.rst.txt
 ./_sources/generated/arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.rst.txt
 ./_sources/generated/arvpyf.mgmt.ArchiverConfig.get_pv_status.rst.txt
+./_sources/generated/arvpyf.mgmt.ArchiverConfig.get_pv_type_info.rst.txt
 ./_sources/generated/arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.rst.txt
 ./_sources/generated/arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.rst.txt
+./_sources/generated/arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.rst.txt
 ./_sources/generated/arvpyf.mgmt.ArchiverConfig.rst.txt
 ./_sources/index.rst.txt
 ./_sources/intro.rst.txt
@@ -96,9 +98,11 @@
 ./generated/arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html
 ./generated/arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html
 ./generated/arvpyf.mgmt.ArchiverConfig.get_pv_status.html
+./generated/arvpyf.mgmt.ArchiverConfig.get_pv_type_info.html
 ./generated/arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.html
 ./generated/arvpyf.mgmt.ArchiverConfig.html
 ./generated/arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html
+./generated/arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.html
 ./genindex.html
 ./index.html
 ./intro.html

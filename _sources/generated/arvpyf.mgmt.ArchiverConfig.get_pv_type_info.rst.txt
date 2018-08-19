@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.get\_pv\_type\_info
+==============================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.get_pv_type_info

@@ -22,8 +22,10 @@ arvpyf.mgmt.ArchiverConfig
       ~ArchiverConfig.get_never_connected_pvs
       ~ArchiverConfig.get_paused_pvs_report
       ~ArchiverConfig.get_pv_status
+      ~ArchiverConfig.get_pv_type_info
       ~ArchiverConfig.get_recently_added_pvs
       ~ArchiverConfig.pause_archiving_pvs
+      ~ArchiverConfig.resume_archiving_pvs
    
    
 

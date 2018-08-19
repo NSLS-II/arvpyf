@@ -23,6 +23,7 @@ Methods for getting the information about Archiver's PVs:
 
    ArchiverConfig.get_all_pvs
    ArchiverConfig.get_pv_status
+   ArchiverConfig.get_pv_type_info
    ArchiverConfig.get_recently_added_pvs
    ArchiverConfig.get_paused_pvs_report
    ArchiverConfig.get_never_connected_pvs
@@ -44,6 +45,7 @@ Methods for aborting, pausing or deleting PVs:
 
    ArchiverConfig.abort_archiving_pv
    ArchiverConfig.pause_archiving_pvs
+   ArchiverConfig.resume_archiving_pvs
    ArchiverConfig.delete_pv
 
 .. currentmodule:: arvpyf.cf
