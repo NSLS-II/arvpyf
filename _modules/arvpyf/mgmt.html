@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arvpyf.mgmt &mdash;  Archiver Python Frontend 0.2.0 documentation</title>
+  <title>arvpyf.mgmt &mdash;  Archiver Python Frontend 0.2.0.post1+g18ce1d6 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.2.0
+                0.2.0.post1+g18ce1d6
               </div>
             
           
@@ -257,6 +257,22 @@
 
         <span class="k">return</span> <span class="n">result</span></div>
 
+<div class="viewcode-block" id="ArchiverConfig.get_pv_details"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.get_pv_details.html#arvpyf.mgmt.ArchiverConfig.get_pv_details">[docs]</a>    <span class="k">def</span> <span class="nf">get_pv_details</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the detailed statistics for the specified PV</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pv : str</span>
+<span class="sd">            PV name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pv&#39;</span><span class="p">:</span> <span class="n">pv</span><span class="p">}</span>
+        <span class="n">request_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;/getPVDetails&#39;</span>
+        <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
 <div class="viewcode-block" id="ArchiverConfig.get_recently_added_pvs"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.html#arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs">[docs]</a>    <span class="k">def</span> <span class="nf">get_recently_added_pvs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a list of PVs sorted by descending PVTypeInfo creation timestamp</span>
@@ -359,6 +375,32 @@
             <span class="n">archived</span> <span class="o">+=</span> <span class="n">a</span>
         <span class="n">others</span> <span class="o">+=</span> <span class="n">o</span>
         <span class="k">return</span> <span class="n">archived</span><span class="p">,</span> <span class="n">others</span></div>
+
+<div class="viewcode-block" id="ArchiverConfig.change_archival_parameters"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.change_archival_parameters.html#arvpyf.mgmt.ArchiverConfig.change_archival_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">change_archival_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;MONITOR&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Change the archival parameters for the specified PV</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        pv : str</span>
+<span class="sd">            PV name</span>
+<span class="sd">        period : float</span>
+<span class="sd">            new sampling period in seconds</span>
+<span class="sd">        method : str</span>
+<span class="sd">            new sampling method, &#39;SCAN&#39; or &#39;MONITOR&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;pv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pv</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;samplingperiod&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+        <span class="n">params</span><span class="p">[</span><span class="s1">&#39;samplingmethod&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">method</span>
+
+        <span class="n">request_url</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">+</span> <span class="s1">&#39;/changeArchivalParameters&#39;</span>
+
+        <span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">request_url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="ArchiverConfig.abort_archiving_pv"><a class="viewcode-back" href="../../generated/arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html#arvpyf.mgmt.ArchiverConfig.abort_archiving_pv">[docs]</a>    <span class="k">def</span> <span class="nf">abort_archiving_pv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pv</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -496,7 +538,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.2.0',
+            VERSION:'0.2.0.post1+g18ce1d6',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

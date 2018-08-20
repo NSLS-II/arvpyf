@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs &mdash;  Archiver Python Frontend 0.2.0.post1+g18ce1d6 documentation</title>
+  <title>arvpyf.mgmt.ArchiverConfig.change_archival_parameters &mdash;  Archiver Python Frontend 0.2.0.post1+g18ce1d6 documentation</title>
   
 
   
@@ -31,8 +31,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report" href="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html" />
-    <link rel="prev" title="arvpyf.mgmt.ArchiverConfig.get_pv_details" href="arvpyf.mgmt.ArchiverConfig.get_pv_details.html" /> 
+    <link rel="next" title="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv" href="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html" />
+    <link rel="prev" title="arvpyf.mgmt.ArchiverConfig.get_archiving_status" href="arvpyf.mgmt.ArchiverConfig.get_archiving_status.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -95,12 +95,12 @@
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_status.html">arvpyf.mgmt.ArchiverConfig.get_pv_status</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_type_info.html">arvpyf.mgmt.ArchiverConfig.get_pv_type_info</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_details.html">arvpyf.mgmt.ArchiverConfig.get_pv_details</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.html">arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html">arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html">arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.archive_pvs.html">arvpyf.mgmt.ArchiverConfig.archive_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_archiving_status.html">arvpyf.mgmt.ArchiverConfig.get_archiving_status</a></li>
-<li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.change_archival_parameters.html">arvpyf.mgmt.ArchiverConfig.change_archival_parameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">arvpyf.mgmt.ArchiverConfig.change_archival_parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html">arvpyf.mgmt.ArchiverConfig.abort_archiving_pv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html">arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.html">arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs</a></li>
@@ -159,13 +159,13 @@
         
           <li><a href="../api.html">API Documentation</a> &raquo;</li>
         
-      <li>arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs</li>
+      <li>arvpyf.mgmt.ArchiverConfig.change_archival_parameters</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/generated/arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/generated/arvpyf.mgmt.ArchiverConfig.change_archival_parameters.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -178,12 +178,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="arvpyf-mgmt-archiverconfig-get-recently-added-pvs">
-<h1>arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs<a class="headerlink" href="#arvpyf-mgmt-archiverconfig-get-recently-added-pvs" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="arvpyf-mgmt-archiverconfig-change-archival-parameters">
+<h1>arvpyf.mgmt.ArchiverConfig.change_archival_parameters<a class="headerlink" href="#arvpyf-mgmt-archiverconfig-change-archival-parameters" title="Permalink to this headline">¶</a></h1>
 <dl class="method">
-<dt id="arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs">
-<code class="descclassname">ArchiverConfig.</code><code class="descname">get_recently_added_pvs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arvpyf/mgmt.html#ArchiverConfig.get_recently_added_pvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of PVs sorted by descending PVTypeInfo creation timestamp</p>
+<dt id="arvpyf.mgmt.ArchiverConfig.change_archival_parameters">
+<code class="descclassname">ArchiverConfig.</code><code class="descname">change_archival_parameters</code><span class="sig-paren">(</span><em>pv</em>, <em>period</em>, <em>method='MONITOR'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arvpyf/mgmt.html#ArchiverConfig.change_archival_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arvpyf.mgmt.ArchiverConfig.change_archival_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the archival parameters for the specified PV</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>pv</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">PV name</p>
+</dd>
+<dt><strong>period</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">new sampling period in seconds</p>
+</dd>
+<dt><strong>method</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">new sampling method, ‘SCAN’ or ‘MONITOR’</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -196,10 +215,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html" class="btn btn-neutral float-right" title="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html" class="btn btn-neutral float-right" title="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="arvpyf.mgmt.ArchiverConfig.get_pv_details.html" class="btn btn-neutral" title="arvpyf.mgmt.ArchiverConfig.get_pv_details" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="arvpyf.mgmt.ArchiverConfig.get_archiving_status.html" class="btn btn-neutral" title="arvpyf.mgmt.ArchiverConfig.get_archiving_status" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,0 +1,6 @@
+arvpyf.mgmt.ArchiverConfig.change\_archival\_parameters
+=======================================================
+
+.. currentmodule:: arvpyf.mgmt
+
+.. automethod:: ArchiverConfig.change_archival_parameters

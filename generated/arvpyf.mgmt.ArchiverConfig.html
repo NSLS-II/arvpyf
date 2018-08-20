@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arvpyf.mgmt.ArchiverConfig &mdash;  Archiver Python Frontend 0.2.0 documentation</title>
+  <title>arvpyf.mgmt.ArchiverConfig &mdash;  Archiver Python Frontend 0.2.0.post1+g18ce1d6 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.2.0
+                0.2.0.post1+g18ce1d6
               </div>
             
           
@@ -94,11 +94,13 @@
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_all_pvs.html">arvpyf.mgmt.ArchiverConfig.get_all_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_status.html">arvpyf.mgmt.ArchiverConfig.get_pv_status</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_type_info.html">arvpyf.mgmt.ArchiverConfig.get_pv_type_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_details.html">arvpyf.mgmt.ArchiverConfig.get_pv_details</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.html">arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html">arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html">arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.archive_pvs.html">arvpyf.mgmt.ArchiverConfig.archive_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_archiving_status.html">arvpyf.mgmt.ArchiverConfig.get_archiving_status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.change_archival_parameters.html">arvpyf.mgmt.ArchiverConfig.change_archival_parameters</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html">arvpyf.mgmt.ArchiverConfig.abort_archiving_pv</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html">arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.html">arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs</a></li>
@@ -219,20 +221,26 @@ the Archiver Appliance MGMT service</p>
 <tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.archive_pvs.html#arvpyf.mgmt.ArchiverConfig.archive_pvs" title="arvpyf.mgmt.ArchiverConfig.archive_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">archive_pvs</span></code></a>(pvnames[,&nbsp;period,&nbsp;method,&nbsp;policy])</td>
 <td>Archive one or more PVs</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.delete_pv.html#arvpyf.mgmt.ArchiverConfig.delete_pv" title="arvpyf.mgmt.ArchiverConfig.delete_pv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_pv</span></code></a>(pv[,&nbsp;deleteData])</td>
+<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.change_archival_parameters.html#arvpyf.mgmt.ArchiverConfig.change_archival_parameters" title="arvpyf.mgmt.ArchiverConfig.change_archival_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_archival_parameters</span></code></a>(pv,&nbsp;period[,&nbsp;method])</td>
+<td>Change the archival parameters for the specified PV</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.delete_pv.html#arvpyf.mgmt.ArchiverConfig.delete_pv" title="arvpyf.mgmt.ArchiverConfig.delete_pv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_pv</span></code></a>(pv[,&nbsp;deleteData])</td>
 <td>Stop archiving the specified PV (Note: the PV needs to be paused first)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_all_pvs.html#arvpyf.mgmt.ArchiverConfig.get_all_pvs" title="arvpyf.mgmt.ArchiverConfig.get_all_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_pvs</span></code></a>([regex,&nbsp;limit])</td>
+<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_all_pvs.html#arvpyf.mgmt.ArchiverConfig.get_all_pvs" title="arvpyf.mgmt.ArchiverConfig.get_all_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_pvs</span></code></a>([regex,&nbsp;limit])</td>
 <td>Return all the PVs (Note: this call can return millions of PVs)</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_archiving_status.html#arvpyf.mgmt.ArchiverConfig.get_archiving_status" title="arvpyf.mgmt.ArchiverConfig.get_archiving_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_archiving_status</span></code></a>(pvs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_archiving_status.html#arvpyf.mgmt.ArchiverConfig.get_archiving_status" title="arvpyf.mgmt.ArchiverConfig.get_archiving_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_archiving_status</span></code></a>(pvs)</td>
 <td>Return the PV archiving status</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html#arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs" title="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_never_connected_pvs</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html#arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs" title="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_never_connected_pvs</span></code></a>()</td>
 <td>Return a list of PVs that never connected</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html#arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report" title="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_paused_pvs_report</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html#arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report" title="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_paused_pvs_report</span></code></a>()</td>
 <td>Return a list of PVs that are currently paused</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_details.html#arvpyf.mgmt.ArchiverConfig.get_pv_details" title="arvpyf.mgmt.ArchiverConfig.get_pv_details"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pv_details</span></code></a>(pv)</td>
+<td>Return the detailed statistics for the specified PV</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_status.html#arvpyf.mgmt.ArchiverConfig.get_pv_status" title="arvpyf.mgmt.ArchiverConfig.get_pv_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pv_status</span></code></a>(pvs)</td>
 <td>Return the PV status</td>
@@ -297,7 +305,7 @@ the Archiver Appliance MGMT service</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0',
+            VERSION:'0.2.0.post1+g18ce1d6',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
