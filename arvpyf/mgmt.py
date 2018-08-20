@@ -103,6 +103,22 @@ class ArchiverConfig(object):
 
         return result
 
+    def get_pv_details(self, pv):
+        """
+        Return the detailed statistics for the specified PV
+
+        Parameters
+        ----------
+        pv : str
+            PV name
+        """
+        params = {'pv': pv}
+        request_url = self.url + '/getPVDetails'
+        req = requests.get(request_url, params=params, stream=True)
+        result = req.json()
+
+        return result
+
     def get_recently_added_pvs(self):
         """
         Return a list of PVs sorted by descending PVTypeInfo creation timestamp
@@ -205,6 +221,32 @@ class ArchiverConfig(object):
             archived += a
         others += o
         return archived, others
+
+    def change_archival_parameters(self, pv, period, method='MONITOR'):
+        """
+        Change the archival parameters for the specified PV
+
+        Parameters
+        ----------
+        pv : str
+            PV name
+        period : float
+            new sampling period in seconds
+        method : str
+            new sampling method, 'SCAN' or 'MONITOR'
+        """
+
+        params = {}
+        params['pv'] = pv
+        params['samplingperiod'] = str(period)
+        params['samplingmethod'] = method
+
+        request_url = self.url + '/changeArchivalParameters'
+
+        req = requests.get(request_url, params=params, stream=True)
+        result = req.json()
+
+        return result
 
     def abort_archiving_pv(self, pv):
         """

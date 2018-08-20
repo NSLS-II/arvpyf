@@ -2,6 +2,12 @@
 Release History
 ===============
 
+v0.3.0 (2018-08-20)
+----------------------------
+
+Updated the ArchiverConfig interface with the get_pv_details and 
+change_archival_parameters methods.
+
 v0.2.0 (2018-08-19)
 ----------------------------
 
