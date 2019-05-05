@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Future Directions &mdash;  Archiver Python Frontend 0.3.0.post1+g119934b documentation</title>
+  <title>Retrieval &mdash;  Archiver Python Frontend 0.3.0.post1+g119934b documentation</title>
   
 
   
@@ -38,8 +38,8 @@
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Release History" href="release-history.html" />
-    <link rel="prev" title="arvpyf.cf.PVFinder.get_signals" href="generated/arvpyf.cf.PVFinder.get_signals.html" /> 
+    <link rel="next" title="API Documentation" href="api.html" />
+    <link rel="prev" title="Configuration" href="configuration.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,9 +90,13 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Archiver Appliance Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="retrieval.html">Retrieval</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Retrieval</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-the-archiverreader-instance">Creating the ArchiverReader Instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-retrieval">Data Retrieval</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Future Directions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="future.html">Future Directions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
 </ul>
 
@@ -139,13 +143,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Future Directions</li>
+      <li>Retrieval</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/future.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/retrieval.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -158,26 +162,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="future-directions">
-<h1>Future Directions<a class="headerlink" href="#future-directions" title="Permalink to this headline">¶</a></h1>
-<p>Efficient data management and processing systems are essential tools in
-the commissioning and operation of accelerator facilities and large
-scientific experiments. Analysis of historical data strongly facilitates
-the troubleshooting process, detection and study of composite behavior
-patterns, comparison and design of different operational  scenarios,
-and many other operational tasks. As of today, the EPICS Archiver
-Appliance has demonstrated reliable service for storing and monitoring
-the EPICS 3 scalar and waveform records of various accelerator and
-experimental devices. The data analysis however is limited by the
-Web-oriented  Apache  Tomcat  technology. This can be significantly
-enhanced  with  an additional  efficient scalable  service as  shown
-in the Figure.  Furthermore,  this new service  will  facilitate the
-development  of composite applications using the Archiver and other
-(e.g., Databroker) interfaces.</p>
-<a class="reference internal image-reference" href="_images/extension.png"><img alt="_images/extension.png" src="_images/extension.png" style="width: 700px;" /></a>
-<p>One of the most straightforward implementaions can be developed
-with the Spark technology as was demonstrated by the CERN team for
-upgrading the CERN Accelerator Logging Service.</p>
+  <div class="section" id="retrieval">
+<h1>Retrieval<a class="headerlink" href="#retrieval" title="Permalink to this headline">¶</a></h1>
+<p>EPICS Archiver Appliance data retrieval is based on REST API.</p>
+<div class="section" id="creating-the-archiverreader-instance">
+<h2>Creating the ArchiverReader Instance<a class="headerlink" href="#creating-the-archiverreader-instance" title="Permalink to this headline">¶</a></h2>
+<p>An ArchiverReader instance is created by specifing the Archiver
+Retrieval service address and time zone:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">arvpyf.ar</span> <span class="kn">import</span> <span class="n">ArchiverReader</span>
+
+<span class="n">ar_url</span> <span class="o">=</span> <span class="s1">&#39;http://xf23id-ca.cs.nsls2.local:17668&#39;</span>
+<span class="n">ar_tz</span> <span class="o">=</span> <span class="s1">&#39;US/Eastern&#39;</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">ar_url</span><span class="p">,</span> <span class="s1">&#39;timezone&#39;</span><span class="p">:</span> <span class="n">ar_tz</span><span class="p">}</span>
+
+<span class="n">arvReader</span> <span class="o">=</span> <span class="n">ArchiverReader</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-retrieval">
+<h2>Data Retrieval<a class="headerlink" href="#data-retrieval" title="Permalink to this headline">¶</a></h2>
+<p>The data retrieval interface is encapsulated in the get() method using
+three arguments: EPICS PV name and the start/end times. As a result,
+the method returns a pandas.DataFrame with the time and data columns.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pv</span> <span class="o">=</span> <span class="s1">&#39;XF:23ID-ID{BPM}Val:PosXS-I&#39;</span>
+<span class="n">since</span> <span class="o">=</span> <span class="s1">&#39;2016-10-06 17:55:35&#39;</span>
+<span class="n">until</span> <span class="o">=</span> <span class="s1">&#39;2016-10-06 17:54:35&#39;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">arvReader</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pv</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">until</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -188,10 +203,10 @@ upgrading the CERN Accelerator Logging Service.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="release-history.html" class="btn btn-neutral float-right" title="Release History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="generated/arvpyf.cf.PVFinder.get_signals.html" class="btn btn-neutral float-left" title="arvpyf.cf.PVFinder.get_signals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="configuration.html" class="btn btn-neutral float-left" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

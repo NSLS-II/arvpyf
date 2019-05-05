@@ -25,7 +25,8 @@ Index
    :maxdepth: 1
 
    intro
-   usage
+   configuration
+   retrieval		  
    api
    future
    release-history

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>arvpyf.mgmt.ArchiverConfig &mdash;  Archiver Python Frontend 0.3.0 documentation</title>
+  <title>arvpyf.mgmt.ArchiverConfig &mdash;  Archiver Python Frontend 0.3.0.post1+g119934b documentation</title>
   
 
   
@@ -17,37 +17,39 @@
   
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" type="text/css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="arvpyf.mgmt.ArchiverConfig.get_all_pvs" href="arvpyf.mgmt.ArchiverConfig.get_all_pvs.html" />
     <link rel="prev" title="API Documentation" href="../api.html" /> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,7 +63,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.0.post1+g119934b
               </div>
             
           
@@ -87,7 +89,8 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Archiver Appliance Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval.html">Retrieval</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../api.html#the-archiverconfig-class">The ArchiverConfig class</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">arvpyf.mgmt.ArchiverConfig</a></li>
@@ -187,75 +190,70 @@
 the Archiver Appliance MGMT service</p>
 <dl class="method">
 <dt id="arvpyf.mgmt.ArchiverConfig.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arvpyf/mgmt.html#ArchiverConfig.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arvpyf.mgmt.ArchiverConfig.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>self</em>, <em>url</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/arvpyf/mgmt.html#ArchiverConfig.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#arvpyf.mgmt.ArchiverConfig.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>url</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first">url of the Archiver Appliance MGMT service</p>
-<p class="last">e.g., <a class="reference external" href="http://xf04id-ca1.cs.nsls2.local:17665">http://xf04id-ca1.cs.nsls2.local:17665</a></p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>url</strong><span class="classifier">str</span></dt><dd><p>url of the Archiver Appliance MGMT service</p>
+<p>e.g., <a class="reference external" href="http://xf04id-ca1.cs.nsls2.local:17665">http://xf04id-ca1.cs.nsls2.local:17665</a></p>
 </dd>
 </dl>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-center">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#arvpyf.mgmt.ArchiverConfig.__init__" title="arvpyf.mgmt.ArchiverConfig.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(url)</td>
-<td>Constructor</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#arvpyf.mgmt.ArchiverConfig.__init__" title="arvpyf.mgmt.ArchiverConfig.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(self, url)</p></td>
+<td><p>Constructor</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html#arvpyf.mgmt.ArchiverConfig.abort_archiving_pv" title="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abort_archiving_pv</span></code></a>(pv)</td>
-<td>Abort any pending requests for archiving the specified PV</td>
+<tr class="row-even"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv.html#arvpyf.mgmt.ArchiverConfig.abort_archiving_pv" title="arvpyf.mgmt.ArchiverConfig.abort_archiving_pv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abort_archiving_pv</span></code></a>(self, pv)</p></td>
+<td><p>Abort any pending requests for archiving the specified PV</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.archive_pvs.html#arvpyf.mgmt.ArchiverConfig.archive_pvs" title="arvpyf.mgmt.ArchiverConfig.archive_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">archive_pvs</span></code></a>(pvnames[,&nbsp;period,&nbsp;method,&nbsp;policy])</td>
-<td>Archive one or more PVs</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.archive_pvs.html#arvpyf.mgmt.ArchiverConfig.archive_pvs" title="arvpyf.mgmt.ArchiverConfig.archive_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">archive_pvs</span></code></a>(self, pvnames[, period, method, …])</p></td>
+<td><p>Archive one or more PVs</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.change_archival_parameters.html#arvpyf.mgmt.ArchiverConfig.change_archival_parameters" title="arvpyf.mgmt.ArchiverConfig.change_archival_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_archival_parameters</span></code></a>(pv,&nbsp;period[,&nbsp;method])</td>
-<td>Change the archival parameters for the specified PV</td>
+<tr class="row-even"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.change_archival_parameters.html#arvpyf.mgmt.ArchiverConfig.change_archival_parameters" title="arvpyf.mgmt.ArchiverConfig.change_archival_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">change_archival_parameters</span></code></a>(self, pv, period)</p></td>
+<td><p>Change the archival parameters for the specified PV</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.delete_pv.html#arvpyf.mgmt.ArchiverConfig.delete_pv" title="arvpyf.mgmt.ArchiverConfig.delete_pv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_pv</span></code></a>(pv[,&nbsp;deleteData])</td>
-<td>Stop archiving the specified PV (Note: the PV needs to be paused first)</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.delete_pv.html#arvpyf.mgmt.ArchiverConfig.delete_pv" title="arvpyf.mgmt.ArchiverConfig.delete_pv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">delete_pv</span></code></a>(self, pv[, deleteData])</p></td>
+<td><p>Stop archiving the specified PV (Note: the PV needs to be paused first)</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_all_pvs.html#arvpyf.mgmt.ArchiverConfig.get_all_pvs" title="arvpyf.mgmt.ArchiverConfig.get_all_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_pvs</span></code></a>([regex,&nbsp;limit])</td>
-<td>Return all the PVs (Note: this call can return millions of PVs)</td>
+<tr class="row-even"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_all_pvs.html#arvpyf.mgmt.ArchiverConfig.get_all_pvs" title="arvpyf.mgmt.ArchiverConfig.get_all_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_pvs</span></code></a>(self[, regex, limit])</p></td>
+<td><p>Return all the PVs (Note: this call can return millions of PVs)</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_archiving_status.html#arvpyf.mgmt.ArchiverConfig.get_archiving_status" title="arvpyf.mgmt.ArchiverConfig.get_archiving_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_archiving_status</span></code></a>(pvs)</td>
-<td>Return the PV archiving status</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_archiving_status.html#arvpyf.mgmt.ArchiverConfig.get_archiving_status" title="arvpyf.mgmt.ArchiverConfig.get_archiving_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_archiving_status</span></code></a>(self, pvs)</p></td>
+<td><p>Return the PV archiving status</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html#arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs" title="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_never_connected_pvs</span></code></a>()</td>
-<td>Return a list of PVs that never connected</td>
+<tr class="row-even"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs.html#arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs" title="arvpyf.mgmt.ArchiverConfig.get_never_connected_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_never_connected_pvs</span></code></a>(self)</p></td>
+<td><p>Return a list of PVs that never connected</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html#arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report" title="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_paused_pvs_report</span></code></a>()</td>
-<td>Return a list of PVs that are currently paused</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report.html#arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report" title="arvpyf.mgmt.ArchiverConfig.get_paused_pvs_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_paused_pvs_report</span></code></a>(self)</p></td>
+<td><p>Return a list of PVs that are currently paused</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_details.html#arvpyf.mgmt.ArchiverConfig.get_pv_details" title="arvpyf.mgmt.ArchiverConfig.get_pv_details"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pv_details</span></code></a>(pv)</td>
-<td>Return the detailed statistics for the specified PV</td>
+<tr class="row-even"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_details.html#arvpyf.mgmt.ArchiverConfig.get_pv_details" title="arvpyf.mgmt.ArchiverConfig.get_pv_details"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pv_details</span></code></a>(self, pv)</p></td>
+<td><p>Return the detailed statistics for the specified PV</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_status.html#arvpyf.mgmt.ArchiverConfig.get_pv_status" title="arvpyf.mgmt.ArchiverConfig.get_pv_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pv_status</span></code></a>(pvs)</td>
-<td>Return the PV status</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_status.html#arvpyf.mgmt.ArchiverConfig.get_pv_status" title="arvpyf.mgmt.ArchiverConfig.get_pv_status"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pv_status</span></code></a>(self, pvs)</p></td>
+<td><p>Return the PV status</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_type_info.html#arvpyf.mgmt.ArchiverConfig.get_pv_type_info" title="arvpyf.mgmt.ArchiverConfig.get_pv_type_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pv_type_info</span></code></a>(pv)</td>
-<td>Return the type info for the specified PV</td>
+<tr class="row-even"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_pv_type_info.html#arvpyf.mgmt.ArchiverConfig.get_pv_type_info" title="arvpyf.mgmt.ArchiverConfig.get_pv_type_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_pv_type_info</span></code></a>(self, pv)</p></td>
+<td><p>Return the type info for the specified PV</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.html#arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs" title="arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_recently_added_pvs</span></code></a>()</td>
-<td>Return a list of PVs sorted by descending PVTypeInfo creation timestamp</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs.html#arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs" title="arvpyf.mgmt.ArchiverConfig.get_recently_added_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_recently_added_pvs</span></code></a>(self)</p></td>
+<td><p>Return a list of PVs sorted by descending PVTypeInfo creation timestamp</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html#arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs" title="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause_archiving_pvs</span></code></a>(pvs)</td>
-<td>Pause archiving the specified PVs</td>
+<tr class="row-even"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs.html#arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs" title="arvpyf.mgmt.ArchiverConfig.pause_archiving_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pause_archiving_pvs</span></code></a>(self, pvs)</p></td>
+<td><p>Pause archiving the specified PVs</p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.html#arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs" title="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resume_archiving_pvs</span></code></a>(pvs)</td>
-<td>Resume archiving the specified PVs</td>
+<tr class="row-odd"><td><p><a class="reference internal" href="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs.html#arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs" title="arvpyf.mgmt.ArchiverConfig.resume_archiving_pvs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resume_archiving_pvs</span></code></a>(self, pvs)</p></td>
+<td><p>Resume archiving the specified PVs</p></td>
 </tr>
 </tbody>
 </table>
@@ -274,7 +272,7 @@ the Archiver Appliance MGMT service</p>
         <a href="arvpyf.mgmt.ArchiverConfig.get_all_pvs.html" class="btn btn-neutral float-right" title="arvpyf.mgmt.ArchiverConfig.get_all_pvs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../api.html" class="btn btn-neutral" title="API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../api.html" class="btn btn-neutral float-left" title="API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -283,7 +281,7 @@ the Archiver Appliance MGMT service</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Brookhaven National Lab.
+        &copy; Copyright 2018, Brookhaven National Lab
 
     </p>
   </div>
@@ -300,37 +298,16 @@ the Archiver Appliance MGMT service</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.3.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-      <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

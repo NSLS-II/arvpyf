@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Archiver Appliance Overview &mdash;  Archiver Python Frontend 0.3.0 documentation</title>
+  <title>Archiver Appliance Overview &mdash;  Archiver Python Frontend 0.3.0.post1+g119934b documentation</title>
   
 
   
@@ -17,37 +17,39 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" type="text/css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Usage" href="usage.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
     <link rel="prev" title="Archiver Python Frontend" href="index.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,7 +63,7 @@
             
             
               <div class="version">
-                0.3.0
+                0.3.0.post1+g119934b
               </div>
             
           
@@ -87,7 +89,8 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Archiver Appliance Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="retrieval.html">Retrieval</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="future.html">Future Directions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
@@ -163,12 +166,12 @@ its architecture is designed after the standard three-tier approach.</p>
 <a class="reference internal image-reference" href="_images/architecture.png"><img alt="_images/architecture.png" src="_images/architecture.png" style="width: 700px;" /></a>
 <p>The data in the bottom data layer are collected in three data stores:</p>
 <ul class="simple">
-<li>STS: short-term temporary file storage (tmpfs) implemented with
-the RAM disk used as an one-hour buffer</li>
-<li>MTS: middle-term repository of the Protocol Buffer daily files
-accumulated over one week (e.g. /DATA/mts)</li>
-<li>LTS: long-term repository of the Protocol Buffer annual files
-(e.g., /DATA/lts)</li>
+<li><p>STS: short-term temporary file storage (tmpfs) implemented with
+the RAM disk used as an one-hour buffer</p></li>
+<li><p>MTS: middle-term repository of the Protocol Buffer daily files
+accumulated over one week (e.g. /DATA/mts)</p></li>
+<li><p>LTS: long-term repository of the Protocol Buffer annual files
+(e.g., /DATA/lts)</p></li>
 </ul>
 <p>In addition to data files, the bottom layer includes the MySQL
 archappl database for maintaining the PV meta data that encompasses
@@ -177,14 +180,14 @@ sampling period).</p>
 <p>The Archiver Appliance middle layer consists of four Tomcat-based
 Java servers:</p>
 <ul class="simple">
-<li>Engine: establishes Channel Access monitors and then writers
-the data into the short term storage (STS)</li>
-<li>ETL (Extract, Transform, and Load): moves data from the STS to
-the MTS and from the MTS to the LTS</li>
-<li>Retrieval: gathers data from all the stores, and then stitches
-them together to satisfy the data retrieval requests</li>
-<li>MGMT: manages all the other three servers and holds the configuration
-state</li>
+<li><p>Engine: establishes Channel Access monitors and then writers
+the data into the short term storage (STS)</p></li>
+<li><p>ETL (Extract, Transform, and Load): moves data from the STS to
+the MTS and from the MTS to the LTS</p></li>
+<li><p>Retrieval: gathers data from all the stores, and then stitches
+them together to satisfy the data retrieval requests</p></li>
+<li><p>MGMT: manages all the other three servers and holds the configuration
+state</p></li>
 </ul>
 <p>The  top layer encompasses GUI, Web, and scripting interfaces that
 communicate with the middle  layer servers. Specifically, plots  with
@@ -205,10 +208,10 @@ or Python interface using the REST (Representational State Transfer) API.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="usage.html" class="btn btn-neutral float-right" title="Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="configuration.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Archiver Python Frontend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Archiver Python Frontend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -217,7 +220,7 @@ or Python interface using the REST (Representational State Transfer) API.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Brookhaven National Lab.
+        &copy; Copyright 2018, Brookhaven National Lab
 
     </p>
   </div>
@@ -234,37 +237,16 @@ or Python interface using the REST (Representational State Transfer) API.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.3.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-      <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

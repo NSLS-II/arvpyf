@@ -1,6 +1,6 @@
-=====
-Usage
-=====
+=============
+Configuration
+=============
 
 The Archiver Configuration Python Frontend (ACPF) is developed 
 for extending the scope of the EPICS Archiver Appliance 
