@@ -3,6 +3,7 @@
 codecov
 coverage
 flake8
+pandas
 pytest
 sphinx
 vcrpy
