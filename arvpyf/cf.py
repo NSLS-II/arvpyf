@@ -42,7 +42,7 @@ class PVFinder(object):
         # select the beamline files
         bl_files = [s for s in files if beamline in s]
 
-        pattern = '.*' + system + '{' + device + '}' + signal + '\Z'
+        pattern = '.*' + system + '{' + device + '}' + signal  # + '\Z'
 
         pvs = []
         for fname in bl_files:

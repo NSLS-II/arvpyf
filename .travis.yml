@@ -18,6 +18,7 @@ install:
   - pip install -r requirements-dev.txt
 
 script:
+  - coverage run -m pytest  # Run the tests 
   - flake8 --max-line-length=115  # Enforce code style (but relax line length limit a bit).
   - set -e # If any of the following steps fail, just stop at that point.
   - make -C docs html  # Build the documentation.
