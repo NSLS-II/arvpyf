@@ -20,6 +20,6 @@ applications and integrating them with general (like `Apache Spark
 <http://nsls-ii.github.io/databroker/>`_) data management and processing 
 systems. 
 				 
-* Documentation: https://sciio.github.io/arvpyf
+* Documentation: https://nsls-ii.github.io/arvpyf/
 * Installation: pip3 install arvpyf
 
