@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Retrieval &mdash;  Archiver Python Frontend 0.4.1.post1+g3fff347 documentation</title>
+  <title>Retrieval &mdash;  Archiver Python Frontend 0.4.2 documentation</title>
   
 
   
@@ -21,12 +21,13 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-        <script type="text/javascript" src="_static/copybutton.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script >var copybuttonSkipText = '>>> ';</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -63,7 +64,7 @@
             
             
               <div class="version">
-                0.4.1.post1+g3fff347
+                0.4.2
               </div>
             
           
@@ -185,7 +186,7 @@ Retrieval service address and time zone:</p>
 <p>The data retrieval interface is encapsulated in the get() method using
 three arguments: EPICS PV name and the start/end times. As a result,
 the method returns a pandas.DataFrame with the time and data columns.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pv</span> <span class="o">=</span> <span class="s1">&#39;XF:23ID-ID{BPM}Val:PosXS-I&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pv</span> <span class="o">=</span> <span class="s1">&#39;XF:23ID-ID</span><span class="si">{BPM}</span><span class="s1">Val:PosXS-I&#39;</span>
 <span class="n">since</span> <span class="o">=</span> <span class="s1">&#39;2016-10-06 17:55:35&#39;</span>
 <span class="n">until</span> <span class="o">=</span> <span class="s1">&#39;2016-10-06 17:54:35&#39;</span>
 
