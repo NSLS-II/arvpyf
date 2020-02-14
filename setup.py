@@ -39,8 +39,8 @@ setup(
     description="Archiver Python Frontend",
     long_description=readme,
     author="Brookhaven National Lab",
-    author_email='malitsky@bnl.gov',
-    url='https://github.com/malitsky/arvpyf',
+    author_email='DAMA@bnl.gov',
+    url='https://github.com/NSLS-II/arvpyf',
     packages=find_packages(exclude=['docs', 'tests']),
     entry_points={
         'console_scripts': [
@@ -53,6 +53,7 @@ setup(
             # When adding files here, remember to update MANIFEST.in as well,
             # or else they will not be included in the distribution on PyPI!
             # 'path/to/data_file',
+            'arvpyf/tests/cassettes/*',
             ]
         },
     install_requires=requirements,
